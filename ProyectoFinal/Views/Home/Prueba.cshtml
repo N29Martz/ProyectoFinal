@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Platillo>
+@{
+}
+
+
+<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-3">
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var platillo in Model)
+        {
+            <div class="cell">
+                <div class="card card-select">
+                    <div class="card-divider">@platillo.Nombre</div>
+                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(platillo.Img)" alt="Imagen" />
+                    <div class="card-section">
+                        <p>@platillo.Descripcion</p>
+                    </div>
+                    <span class="product-card-price">
+                        L. <p>Precio: @platillo.Precio</p>
+                    </span>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No hay platillos disponibles.</p>
+    }
+
+</div>

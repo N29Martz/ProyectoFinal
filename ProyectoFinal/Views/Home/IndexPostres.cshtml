@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Menú";
+}
+
+<header>
+    <article class="">
+        <div class="grid-x">
+            <div class="cell">
+                <img src="~/images/logo2.png" alt="Logo del restaurante" class="full-width-image" />
+            </div>
+        </div>
+    </article>
+</header>
+<br />
+<div class="top-bar align-center" id="main-menu">
+    <ul class="menu medium-text-center" style=" background-color: #141E18;">
+        <li>
+            <a asp-controller="Home" asp-action="Index">Comidas <i class="fa-solid fa-drumstick-bite"></i></a>
+        </li>
+        <li>
+            <a asp-controller="Home" asp-action="IndexBebidas">Bebidas <i class="fa-solid fa-martini-glass"></i></a>
+        </li>
+        <li>
+            <a asp-controller="Home" asp-action="IndexPostres">Postres y Más </a>
+        </li>
+    </ul>
+</div>
+
+<partial name="_PostresPartial" />

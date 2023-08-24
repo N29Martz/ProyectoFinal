@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Pedido>
+
+@{
+    ViewData["Title"] = "Resultados de Búsqueda";
+}
+
+<div class="grid-container">
+    <h2>@ViewData["Title"]</h2>
+
+    <div class="grid-x grid-margin-x small-up-1 medium-up-3">
+        @foreach (var pedido in Model)
+        {
+            <div class="cell">
+                <div class="card custom-card-margin">
+                    <div class="card-divider">
+                        Cliente: @pedido.Nombre
+                    </div>
+                    <div class="card-section">
+                        <h4>Cantidad: @pedido.Cantidad</h4>
+                        <h5>Estado de entrega: @pedido.Entrega</h5>
+                        <p>@pedido.Descripcion</p>
+                        <div class="button-group">
+                            <a asp-action="EditarPedido" asp-route-id="@pedido.Id" class="boton2 button secondary expanded">Editar <i class="fa-solid fa-pencil"></i></a>
+                            <a asp-action="Eliminar" asp-route-id="@pedido.Id" class="boton2 button alert expanded">Eliminar <i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

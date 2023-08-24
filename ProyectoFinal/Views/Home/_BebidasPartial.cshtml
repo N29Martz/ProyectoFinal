@@ -1,0 +1,202 @@
+﻿@model IEnumerable<Bebida>
+
+<div class="text-center">
+    <br />
+    <h3>Refrescos:</h3>
+    <hr />
+</div>
+
+<div class="grid-x grid-margin-x small-up-2 medium-up-3 large-up-3 align-center">
+    <div class="cell">
+        <ul class="pricing-table">
+            <li class="title">Productos Pepsi</li>
+            <li class="description">Bebidas desechables o en embace</li>
+    @foreach (var bebida in Model )
+    {
+        if (bebida.Marca == "Pepsi")
+        {
+                    <li class="grid-x align-middle">
+                        <div class="cell auto">
+                            @bebida.Nombre - Precio: @bebida.Precio
+                        </div>
+                        <div class="cell shrink">
+                            <a asp-action="EditarBebida" asp-route-id="@bebida.Id" class="boton2 button secondary">Editar <i class="fa-solid fa-pencil"></i></a>
+                        </div>
+                        <div class="cell shrink">
+                            <a asp-action="EliminarBebida" asp-route-id="@bebida.Id" class="boton2 button alert">Eliminar <i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </li>
+                }
+    }
+        </ul>
+    </div>
+
+    <div class="cell">
+        <ul class="pricing-table">
+            <li class="title">Productos Coca - Cola</li>
+            <li class="description">Bebidas desechables o en envase</li>
+            @foreach (var bebida in Model)
+            {
+                if (bebida.Marca == "CocaCola")
+                {
+                    <li class="grid-x align-middle">
+                        <div class="cell auto">
+                            @bebida.Nombre - Precio: @bebida.Precio
+                        </div>
+                        <div class="cell shrink">
+                            <a asp-action="EditarBebida" asp-route-id="@bebida.Id" class="boton2 button secondary">Editar <i class="fa-solid fa-pencil"></i></a>
+                        </div>
+                        <div class="cell shrink">
+                            <a asp-action="EliminarBebida" asp-route-id="@bebida.Id" class="boton2 button alert">Eliminar <i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+
+    <div class="cell">
+        <ul class="pricing-table">
+            <li class="title">Productos Pepsi</li>
+            <li class="description">Bebidas desechables o en embace</li>
+            @foreach (var bebida in Model)
+            {
+                if (bebida.Marca == "Naturales")
+                {
+                    <li class="grid-x align-middle">
+                        <div class="cell auto">
+                            @bebida.Nombre - Precio: @bebida.Precio
+                        </div>
+                        <div class="cell shrink">
+                            <a asp-action="EditarBebida" asp-route-id="@bebida.Id" class="boton2 button secondary">Editar <i class="fa-solid fa-pencil"></i></a>
+                        </div>
+                        <div class="cell shrink">
+                            <a asp-action="EliminarBebida" asp-route-id="@bebida.Id" class="boton2 button alert">Eliminar <i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+
+    <div class="cell">
+        <ul class="pricing-table">
+            <li class="title">Productos Pepsi</li>
+            <li class="description">Bebidas desechables o en embace</li>
+            @foreach (var bebida in Model)
+            {
+                if (bebida.Marca == "BaryCocteles")
+                {
+                    <li class="grid-x align-middle">
+                        <div class="cell auto">
+                            @bebida.Nombre - Precio: @bebida.Precio
+                        </div>
+                        <div class="cell shrink">
+                            <a asp-action="EditarBebida" asp-route-id="@bebida.Id" class="boton2 button secondary">Editar <i class="fa-solid fa-pencil"></i></a>
+                        </div>
+                        <div class="cell shrink">
+                            <a asp-action="EliminarBebida" asp-route-id="@bebida.Id" class="boton2 button alert">Eliminar <i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+
+    <div class="cell">
+        <ul class="pricing-table">
+            <li class="title">Productos Pepsi</li>
+            <li class="description">Bebidas desechables o en embace</li>
+            @foreach (var bebida in Model)
+            {
+                if (bebida.Marca == "Licor")
+                {
+                    <li class="grid-x align-middle">
+                        <div class="cell auto">
+                            @bebida.Nombre - Precio: @bebida.Precio
+                        </div>
+                        <div class="cell shrink">
+                            <a asp-action="EditarBebida" asp-route-id="@bebida.Id" class="boton2 button secondary">Editar <i class="fa-solid fa-pencil"></i></a>
+                        </div>
+                        <div class="cell shrink">
+                            <a asp-action="EliminarBebida" asp-route-id="@bebida.Id" class="boton2 button alert">Eliminar <i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+    
+</div>
+
+<div class="text-center">
+    <br />
+    <hr />
+    <h3>Otras:</h3>
+    <hr />
+</div>
+<div class="grid-x grid-margin-x small-up-2 medium-up-3 large-up-3 align-center">
+    <div class="cell">
+            <ul class="pricing-table">
+                <li class="title">Bar y Cócteles</li>
+                <li>Daiquirí</li>
+                <li>Tequila Sunshine</li>
+                <li>Piña Colada</li>
+                <li>Manhattan</li>
+            </ul>
+    </div>
+    <div class="cell">
+            <ul class="pricing-table">
+                <li class="title">Vinos</li>
+                <li>Vino Rojo</li>
+                <li>Vino Rosado</li>
+                <li>Vino Blanco</li>
+                <li>Merlot</li>
+            </ul>
+    </div>
+    <div class="cell">
+            <ul class="pricing-table">
+                <li class="title">Especialidades de la casa</li>
+                <li>Mojito</li>
+                <li>Martini</li>
+                <li>Cosmopolitan</li>
+                <li>Blody Marry</li>
+            </ul>
+    </div>
+    <div class="cell">
+            <ul class="pricing-table">
+                <li class="title">Cerveza Nacional</li>
+                <li>Salvavida</li>
+                <li>Barena</li>
+                <li>Port Royal</li>
+                <li>Imperial</li>
+            </ul>
+    </div>
+    <div class="cell">
+            <ul class="pricing-table">
+                <li class="title">Cerveza Extranjera</li>
+                <li>Corona</li>
+                <li>Miller Draft</li>
+                <li>Toña</li>
+                <li>Stella Artois</li>
+            </ul>
+    </div>
+    <div class="cell">
+            <ul class="pricing-table">
+                <li class="title">Cerveza Artesanal</li>
+                <li>Dinastía</li>
+                <li>La20</li>
+                <li>Perla Negra</li>
+                <li>India Virgen</li>
+            </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="columns medium-6 medium-center text-center">
+        <a asp-action="CrearBebida" class="hollow button">
+            <i class="fa-solid fa-plus"></i>
+            Nueva Bebida
+        </a>
+    </div>
+</div>

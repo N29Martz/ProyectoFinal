@@ -1,0 +1,39 @@
+﻿@model Platillo
+
+@{
+    ViewData["Title"] = "Nuevo Platillo";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="CrearPlatillo" class="form" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="texto-alerta"></div>
+
+    <div class="">
+        <label asp-for="Nombre" class="text"></label>
+        <input asp-for="Nombre" class="input" />
+        <span asp-validation-for="Nombre" class="texto-alerta"></span>
+    </div>
+
+    <div class="">
+        <label asp-for="Img">Imagen:</label>
+        <input asp-for="Img" type="file" name="Imagen" id="Imagen" accept="image/*" />
+    </div>
+
+    <div class="">
+        <label asp-for="Descripcion" class="text"></label>
+        <input asp-for="Descripcion" class="input" />
+        <span asp-validation-for="Descripcion" class="texto-alerta"></span>
+    </div>
+
+    <div class="">
+        <label asp-for="Precio" class="text"></label>
+        <input asp-for="Precio" class="input" />
+        <span asp-validation-for="Precio" class="texto-alerta"></span>
+    </div>
+
+    <button type="submit" class="button boton">Guardar <i class="fa-solid fa-floppy-disk"></i></button>
+    <a asp-action="Index" class="button secondary boton">Cancelar <i class="fa-solid fa-ban"></i></a>
+</form>
+
+

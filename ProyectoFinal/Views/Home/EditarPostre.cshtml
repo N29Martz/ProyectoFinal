@@ -1,0 +1,53 @@
+﻿@model Postres
+
+@{
+    ViewData["Title"] = "Editar Postre";
+}
+
+<div class="grid-container">
+    <h2>@ViewData["Title"]</h2>
+
+
+    <form asp-action="EditarPostre" class="form" enctype="multipart/form-data">
+
+        <div asp-validation-summary="ModelOnly" class="texto-alerta"></div>
+
+        <input asp-for="Id" type="hidden" />
+
+        <div class="">
+            <label asp-for="TipoPlatillo" class="text"></label>
+            <input asp-for="TipoPlatillo" class="input" />
+            <span asp-validation-for="TipoPlatillo" class="texto-alerta"></span>
+        </div>
+
+        <div class="">
+            <label asp-for="Img">Imagen:</label>
+            <input asp-for="Img" type="file" name="Imagen" id="Imagen" accept="image/*" />
+        </div>
+
+        <div class="">
+            <label asp-for="Nombre" class="text"></label>
+            <input asp-for="Nombre" class="input" />
+            <span asp-validation-for="Nombre" class="texto-alerta"></span>
+        </div>
+
+        <div class="">
+            <label asp-for="Descripcion" class="text"></label>
+            <input asp-for="Descripcion" class="input" />
+            <span asp-validation-for="Descripcion" class="texto-alerta"></span>
+        </div>
+
+        <div class="">
+            <label asp-for="Precio" class="text"></label>
+            <input asp-for="Precio" class="input" />
+            <span asp-validation-for="Precio" class="texto-alerta"></span>
+        </div>
+
+        <button type="submit" class="button boton">Actualizar <i class="fa-solid fa-floppy-disk"></i></button>
+        <a asp-action="IndexPostres" class="button secondary boton">Cancelar <i class="fa-solid fa-ban"></i></a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

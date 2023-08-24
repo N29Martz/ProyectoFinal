@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProyectoFinal</title>
+    <link rel="stylesheet" href="~/lib/foundation/css/foundation.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/all.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ProyectoFinal.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="top-bar topbar-responsive">
+            <div>
+                <div class="top-bar-left">
+                    <ul class="menu simple vertical medium-horizontal" style="background-color: #141E18;">
+                        <li class="menu-text"></li>
+                        <li>
+                            <a asp-controller="Home" asp-action="Index">Inicio <i class="fa-solid fa-house"></i></a>
+                        </li>
+                        <li>
+                            <a asp-controller="Pedidos" asp-action="Index">Pedidos <i class="fa-solid fa-pen-to-square"></i></a>
+                        </li>
+                        
+                    </ul>
+                </div>
+
+            </div>
+            <div class="top-bar-right">
+                <ul class="menu" style="background-color: #141E18;">
+                    <div class="top-bar-right">
+                        <form asp-controller="Pedidos" asp-action="BuscarPorNombre" method="get" class="input-group">
+                            <input class="input-group-field" type="search" placeholder="Buscar" aria-label="Search" name="busqueda">
+                            <div class="input-group-button">
+                                <button class="button hollow topbar-responsive-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </form>
+                    </div>   
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+           NJ &copy; 2023 - ProyectoFinal -   POO
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/foundation/js/vendor/foundation.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/all.min.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#search-input").on("input", function () {
+                var searchTerm = $(this).val();
+                if (searchTerm.length >= 3) {
+                    $.ajax({
+                        url: "@Url.Action("BuscarPorNombre", "Pedidos")",
+                        method: "GET",
+                        data: { busqueda: searchTerm },
+                        success: function (data) {
+                            // Actualiza la lista de resultados de búsqueda
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

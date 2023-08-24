@@ -1,0 +1,19 @@
+﻿@model Postres
+@{
+    ViewData["Title"] = "Eliminar Postres";
+}
+
+
+
+<div class="grid-container">
+
+    <h3 class="mb-3">
+        Estas seguro que quiere eliminar este platillo: @Model.Nombre
+    </h3>
+
+    <form asp-action="EliminaPostre">
+        <input type="hidden" asp-for="Id" />
+        <button class="hollow button alert" type="submit">Borrar <i class="fa-solid fa-trash"></i></button>
+        <a asp-action="IndexPostres" class="hollow button">Cancelar <i class="fa-solid fa-ban"></i></a>
+    </form>
+</div>

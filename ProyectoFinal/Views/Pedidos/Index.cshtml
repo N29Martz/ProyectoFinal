@@ -1,0 +1,158 @@
+﻿@model IEnumerable<Pedido>
+
+@{
+    ViewData["Title"] = "Pedidos";
+}
+
+<div class="grid-container">
+    <h2>@ViewData["Title"]</h2>
+    <h5>En esta página se mostrarán los pedidos pendientes a entregar</h5>
+
+    <a asp-action="CrearPedido" class="hollow button">Nuevo pedido <i class="fa-solid fa-cart-plus"></i></a>
+
+    <ul class="tabs" data-tabs id="pedidoTabs">
+        <li class="tabs-title is-active"><a href="#pendientes" aria-selected="true">Pendientes</a></li>
+        <li class="tabs-title"><a href="#entregados">Entregados</a></li>
+        <li class="tabs-title"><a href="#todos">Todos</a></li>
+    </ul>
+
+    <div class="tabs-content" data-tabs-content="pedidoTabs">
+        <div class="tabs-panel is-active" id="pendientes">
+            
+            <div class="grid-x grid-margin-x small-up-1 medium-up-3">
+                @foreach (var pedido in Model)
+                {
+                    if (pedido.Entrega == "Pendiente")
+                    {
+                        <div class="cell">
+                            <div class="card custom-card-margin">
+                                <div class="card-divider">
+                                    Cliente: @pedido.Nombre
+                                </div>
+                                <div class="card-section">
+                                    <h4>Cantidad: @pedido.Cantidad</h4>
+                                    <h5>Estado de entrega: @pedido.Entrega</h5>
+                                    <p>@pedido.Descripcion</p>
+                                    <div class="button-group">
+                                        <a asp-action="EditarPedido" asp-route-id="@pedido.Id" class="boton2 button secondary expanded">Editar <i class="fa-solid fa-pencil"></i></a>
+                                        <a href="#" class="boton2 button success expanded marcar-entregado-btn" data-id="@pedido.Id">Marcar como Entregado <i class="fa-solid fa-check"></i></a>
+                                        <a asp-action="Eliminar" asp-route-id="@pedido.Id" class="boton2 button alert expanded">Eliminar <i class="fa-solid fa-trash"></i></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="tabs-panel" id="entregados">
+            
+            <div class="grid-x grid-margin-x small-up-1 medium-up-3">
+                @foreach (var pedido in Model)
+                {
+                    if (pedido.Entrega == "Entregado")
+                    {
+                        <div class="cell">
+                            <div class="card custom-card-margin">
+                                <div class="card-divider">
+                                    Cliente: @pedido.Nombre
+                                </div>
+                                <div class="card-section">
+                                    <h4>Cantidad: @pedido.Cantidad</h4>
+                                    <h5>Estado de entrega: @pedido.Entrega</h5>
+                                    <p>@pedido.Descripcion</p>
+                                    <div class="button-group">
+                                        <a asp-action="EditarPedido" asp-route-id="@pedido.Id" class="boton2 button secondary expanded">Editar <i class="fa-solid fa-pencil"></i></a>
+                                        <a href="#" class="boton2 button warning expanded marcar-pendiente-btn" data-id="@pedido.Id">Anular entrega <i class="fa-solid fa-circle-exclamation"></i></a>
+                                        <a asp-action="Eliminar" asp-route-id="@pedido.Id" class="boton2 button alert expanded">Eliminar <i class="fa-solid fa-trash"></i></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="tabs-panel" id="todos">
+            
+            <div class="grid-x grid-margin-x small-up-1 medium-up-3">
+                @foreach (var pedido in Model)
+                {
+                    <div class="cell">
+                        <div class="card custom-card-margin">
+                            <div class="card-divider">
+                                Cliente: @pedido.Nombre
+                            </div>
+                            <div class="card-section">
+                                <h4>Cantidad: @pedido.Cantidad</h4>
+                                <h5>Estado de entrega: @pedido.Entrega</h5>
+                                <p>@pedido.Descripcion</p>
+                                <div class="button-group">
+                                    <a asp-action="EditarPedido" asp-route-id="@pedido.Id" class="boton2 button secondary expanded">Editar <i class="fa-solid fa-pencil"></i></a>
+                                    <a asp-action="Eliminar" asp-route-id="@pedido.Id" class="boton2 button alert expanded">Eliminar <i class="fa-solid fa-trash"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).foundation();
+
+        $(document).ready(function () {
+            $(".marcar-entregado-btn").on("click", function (event) {
+                event.preventDefault();
+
+                var id = $(this).data("id");
+
+                $.ajax({
+                    url: "@Url.Action("MarcarEntregado", "Pedidos")",
+                    type: "POST",
+                    data: { id: id },
+                    success: function () {
+                        // Recarga la página después de que la solicitud se complete
+                        location.reload();
+                    },
+                    error: function () {
+                        // Manejo de errores si es necesario
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $(".marcar-pendiente-btn").on("click", function (event) {
+                event.preventDefault();
+
+                var id = $(this).data("id");
+
+                $.ajax({
+                    url: "@Url.Action("AnularEntrega", "Pedidos")",
+                    type: "POST",
+                    data: { id: id },
+                    success: function () {
+                        // Recarga la página después de que la solicitud se complete
+                        location.reload();
+                    },
+                    error: function () {
+                        // Manejo de errores si es necesario
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+
+
+

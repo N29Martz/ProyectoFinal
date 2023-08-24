@@ -1,0 +1,45 @@
+﻿@model Bebida
+@{
+    ViewData["Title"] = "Editar Bebida";
+}
+
+<div class="grid-container">
+
+    <h2>@ViewData["Title"]</h2>
+
+    <form asp-action="EditarBebida" class="form">
+        <div asp-validation-summary="ModelOnly" class="texto-alerta"></div>
+
+        <div class="">
+            <label asp-for="Nombre" class="text"></label>
+            <input asp-for="Nombre" class="input" />
+            <span asp-validation-for="Nombre" class="texto-alerta"></span>
+        </div>
+
+        <div class="">
+            <label asp-for="Marca" class="text"></label>
+            <select asp-for="Marca" class="input">
+                <option value=""></option>
+                <option value="CocaCola">Coca-Cola</option>
+                <option value="Pepsi">Pepsi</option>
+                <option value="Naturales">Naturales</option>
+                <option value="BaryCocteles">Bar y Cocteles</option>
+                <option value="Licor">Licor</option>
+            </select>
+            <span asp-validation-for="Marca" class="texto-alerta"></span>
+        </div>
+
+        <div class="">
+            <label asp-for="Precio" class="text"></label>
+            <input asp-for="Precio" class="input" />
+            <span asp-validation-for="Precio" class="texto-alerta"></span>
+        </div>
+
+        <button type="submit" class="button boton">Actualizar <i class="fa-solid fa-floppy-disk"></i></button>
+        <a asp-action="Index" class="button secondary boton">Cancelar <i class="fa-solid fa-ban"></i></a>
+    </form>
+
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
